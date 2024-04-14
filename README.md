@@ -62,6 +62,7 @@
     <div class="content">
         <img src="https://s31.picofile.com/file/8474353800/Untitled_3.png" alt="Rotating Image">
     </div>
+    
 
     <div class="footer">
         <p>I am a designer</p>
