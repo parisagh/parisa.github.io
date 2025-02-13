@@ -3,69 +3,158 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page</title>
+    <title>My Portfolio</title>
     <style>
         body {
+            font-family: Arial, sans-serif;
+            direction: ltr;
+            text-align: left;
+            background-color: #FFEEEE;
+            color: #333;
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
-            background-image: url("https://s31.picofile.com/file/8474353950/22.jpg");
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            color: white;
-            cursor: url('https://s30.picofile.com/file/8474353776/Untitled_3.jpg'), auto;
+            display: flex;
         }
-        .header {
-            padding: 20px;
-            text-align: left;
-        }
-        .header a {
-            color: white;
-            text-decoration: none;
-            margin-right: 20px;
-        }
-        .footer {
-            background-color: rgba(0, 0, 0, 0.7);
-            color: white;
-            text-align: center;
+        nav {
+            width: 200px;
+            background-color: #b30000;
             padding: 20px;
             position: fixed;
-            bottom: 0;
-            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 15px 20px;
+            font-size: 18px;
+            display: block;
+            text-align: center;
+            width: 120%;
+            transition: background-color 0.3s, color 0.3s, width 0.3s;
+            cursor: pointer;
+        }
+        nav a.active {
+            background-color: #FFEEEE;
+            color: #b30000;
+            border-radius: 5px;
+            width: 140%;
         }
         .content {
-            padding: 20px;
-            margin-top: 150px; /* Adjust the top margin as needed */
-            text-align: center; /* Center-align content */
+            margin-left: 220px;
+            padding: 40px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
         }
-        .content img {
-            max-width: 100%; /* Make sure image doesn't exceed the viewport width */
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            display: block;
+            margin: 20px auto;
         }
-        .content p {
+        .section {
+            display: none;
+        }
+        .section.active {
+            display: block;
+        }
+        .project-img {
+            width: 100%;
+            max-width: 600px;
+            margin: 10px 0;
+            border-radius: 10px;
+            display: block;
+        }
+        footer {
+            background-color: red;
             color: white;
-        }
-        .footer p {
-            background-color: rgba(0, 0, 0, 0.7);
+            text-align: center;
             padding: 10px;
-            display: inline-block;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
         }
     </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let navLinks = document.querySelectorAll("nav a");
+            let sections = document.querySelectorAll(".section");
+            
+            function showSection(id) {
+                sections.forEach(section => section.classList.remove("active"));
+                document.getElementById(id).classList.add("active");
+            }
+            
+            navLinks.forEach(link => {
+                link.addEventListener("click", function(event) {
+                    event.preventDefault();
+                    navLinks.forEach(l => l.classList.remove("active"));
+                    this.classList.add("active");
+                    showSection(this.getAttribute("data-section"));
+                });
+            });
+            
+            showSection("about");
+        });
+    </script>
 </head>
 <body>
-    <div class="header">
-        <a href="https://parisagh.github.io/parisa.github.io/aboutme">About Me</a>
-        <a href="https://parisagh.github.io/parisa.github.io/skills">Skills</a>
-        <a href="https://parisagh.github.io/parisa.github.io/projects">Projects</a>
-    </div>
-
+    <nav>
+        <a href="#" data-section="about" class="active">About Me</a>
+        <a href="#" data-section="projects">Projects</a>
+        <a href="#" data-section="skills">Skills</a>
+        <a href="#" data-section="contact">Contact</a>
+    </nav>
     <div class="content">
-        <img src="https://s31.picofile.com/file/8474353800/Untitled_3.png" alt="Rotating Image">
+        <section id="about" class="section active">
+            <h2>About Me</h2>
+            <img src="https://imgurl.ir/uploads/l655420_IMG_20240205_233852_471.jpg" alt="Profile Picture" class="profile-img">
+            <p>I love designing spaces that feel cozy and look great. Interior design is my passion, and I enjoy turning ideas into beautiful and functional places.</p>
+        </section>
+        <section id="projects" class="section">
+            <h2>Projects</h2>
+            <h3>Bathroom Renovation</h3>
+            <p>Before renovation:</p>
+            <img src="https://imgurl.ir/uploads/o4046_1.jpg" alt="Before Renovation" class="project-img">
+            <p>After renovation:</p>
+            <img src="https://imgurl.ir/uploads/b857476_1.jpg" alt="After Renovation" class="project-img">
+            <p>Sheet Layouts:</p>
+            <img src="https://imgurl.ir/uploads/q366246_1.jpg" alt="Sheet Layout 1" class="project-img">
+            <img src="https://imgurl.ir/uploads/a179758_2.jpg" alt="Sheet Layout 2" class="project-img">
+            <h3>Kitchen Renovation</h3>
+            <p>Before renovation:</p>
+            <img src="https://imgurl.ir/uploads/w8095_2_room_flat_for_rent_in_salita_Montetto_3_Nervi_Genoa__idealista_no.png" alt="Before Renovation" class="project-img">
+            <p>After renovation:</p>
+            <img src="https://imgurl.ir/uploads/j548244_1.jpg" alt="After Renovation" class="project-img">
+            <p>Sheet Layouts:</p>
+            <img src="https://imgurl.ir/uploads/u321688_1.jpg" alt="Sheet Layout 1" class="project-img">
+            <img src="https://imgurl.ir/uploads/x982620_2.jpg" alt="Sheet Layout 2" class="project-img">
+        </section>
+        <section id="skills" class="section">
+            <h2>Skills</h2>
+            <p>Photoshop</p>
+            <p>AutoCAD</p>
+            <p>SketchUp</p>
+            <p>Revit</p>
+            <p>Rendering</p>
+        </section>
+        <section id="contact" class="section">
+            <h2>Contact</h2>
+            <p><strong>Phone:</strong> +393513530474</p>
+            <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/parisa-ghasemzadeh-51b082206/" target="_blank">Parisa Ghasemzadeh</a></p>
+            <p><strong>Email:</strong> <a href="mailto:parigh.gh@gmail.com">parigh.gh@gmail.com</a></p>
+        </section>
     </div>
-
-    <div class="footer">
-        <p>I am a designer</p>
-        <p><a href="https://parisagh.github.io/parisa.github.io/aboutme">Click here to know about me</a></p>
-    </div>
+    <footer>
+        © 2025 All Rights Reserved.
+    </footer>
 </body>
 </html>
